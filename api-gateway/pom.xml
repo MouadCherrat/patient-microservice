@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.hps</groupId>
-		<artifactId>HPS-microservice-project</artifactId>
+		<artifactId>Patient-microservice-project</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
@@ -36,6 +36,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 
 		<dependency>
 			<groupId>io.projectreactor</groupId>

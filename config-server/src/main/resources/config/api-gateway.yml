@@ -9,7 +9,7 @@ spring.application.name: api-gateway
 spring:
   cloud:
     gateway:
-      globalcors:
+      global-cors:
         corsConfigurations:
           '[/**]':
             allowedOrigins: "*"
@@ -17,18 +17,18 @@ spring:
             allowedHeaders: "*"
       discovery:
         locator:
-          enabled: false
           lower-case-service-id: true
-      routes:
-        - id: product-service
-          uri: lb://product-service
-          predicates:
-            - Path=/api/v1/products/**
-
-        - id: user-service
-          uri: lb://user-service
-          predicates:
-            - Path=/api/v1/users/**
+          enabled: true
+#      routes:
+#        - id: product-service
+#          uri: lb://product-service
+#          predicates:
+#            - Path=/api/v1/products/**
+#
+#        - id: user-service
+#          uri: lb://user-service
+#          predicates:
+#            - Path=/api/v1/users/**
 
 eureka:
   instance.prefer-ip-address: true

@@ -9,14 +9,15 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hps</groupId>
-    <artifactId>HPS-microservice-project</artifactId>
+    <artifactId>Patient-microservice-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>HPS microservice project</name>
+    <name>Patient microservice project</name>
     
     <modules>
         <module>eureka-server</module>
         <module>config-server</module>
         <module>api-gateway</module>
+        <module>user-service</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -46,14 +47,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-        </dependency>
-        <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-starter-security</artifactId>-->
+<!--    </dependency>-->
     </dependencies>
     
     <dependencyManagement>
