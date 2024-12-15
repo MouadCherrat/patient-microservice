@@ -28,9 +28,9 @@ services:
       - db-net
 
   phpmyadmin:
-    image: phpmyadmin-patient
+    image: phpmyadmin
     restart: always
-    container_name: phpmyadmin
+    container_name: phpmyadmin-patient
     ports:
       - "81:80"
     environment:
