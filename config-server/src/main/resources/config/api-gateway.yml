@@ -33,6 +33,15 @@ spring:
           uri: lb://patient-service
           predicates:
             - Path=/api/patients/**
+        - id: PATIENT-SERVICE
+          uri: lb://patient-service
+          predicates:
+            - Path=/api/location-history/**
+        - id: PATIENT-SERVICE
+          uri: lb://patient-service
+          predicates:
+            - Path=/api/medical-records/**
+
 
 eureka:
   instance.prefer-ip-address: true
