@@ -17,18 +17,22 @@ spring:
             allowedHeaders: "*"
       discovery:
         locator:
-          lower-case-service-id: true
           enabled: true
-#      routes:
-#        - id: product-service
-#          uri: lb://product-service
-#          predicates:
-#            - Path=/api/v1/products/**
-#
-#        - id: user-service
-#          uri: lb://user-service
-#          predicates:
-#            - Path=/api/v1/users/**
+      routes:
+        - id: alert-service
+          uri: lb://ALERT-SERVICE
+          predicates:
+            - Path=/api/alerts/**
+
+        - id: USER-SERVICE
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**
+
+        - id: PATIENT-SERVICE
+          uri: lb://patient-service
+          predicates:
+            - Path=/api/patients/**
 
 eureka:
   instance.prefer-ip-address: true
