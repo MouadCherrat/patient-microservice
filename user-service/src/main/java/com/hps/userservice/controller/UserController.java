@@ -1,5 +1,6 @@
 package com.hps.userservice.controller;
 
+import com.hps.userservice.dto.PatientResponse;
 import com.hps.userservice.entity.User;
 import com.hps.userservice.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -41,6 +42,10 @@ public class UserController {
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+    @GetMapping("/{doctorId}/patients")
+    public ResponseEntity<List<PatientResponse>> getPatientsByDoctor(@PathVariable Long doctorId) {
+        return ResponseEntity.ok(userService.getPatientsByDoctor(doctorId));
     }
 
     @DeleteMapping("/{id}")

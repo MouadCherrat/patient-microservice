@@ -38,6 +38,9 @@ public class PatientService {
             return patientRepository.save(patient);
         }).orElseThrow(() -> new RuntimeException("Patient not found"));
     }
+    public List<Patient> getPatientsByDoctor(Long doctorId) {
+        return patientRepository.findByDoctorId(doctorId);
+    }
 
     public void deletePatient(Long id) {
         patientRepository.deleteById(id);

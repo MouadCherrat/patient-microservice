@@ -2,7 +2,9 @@ package com.hps.userservice.service;
 
 
 
+import com.hps.userservice.dto.PatientResponse;
 import com.hps.userservice.entity.User;
+import com.hps.userservice.http.PatientClient;
 import com.hps.userservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,18 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PatientClient patientClient;
+
+    public List<PatientResponse> getPatientsByDoctor(Long doctorId) {
+        User doctor = userRepository.findById(doctorId)
+                .orElseThrow(() -> new RuntimeException("Doctor not found"));
+
+        if (!"DOCTOR".equalsIgnoreCase(doctor.getRole())) {
+            throw new RuntimeException("User is not a doctor");
+        }
+
+        return patientClient.getPatientsByDoctor(doctorId);
+    }
 
     public List<User> getAllUsers() {
         return userRepository.findAll();

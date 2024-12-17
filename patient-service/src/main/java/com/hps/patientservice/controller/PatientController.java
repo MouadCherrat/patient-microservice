@@ -31,6 +31,11 @@ public class PatientController {
     public ResponseEntity<Patient> createPatient(@RequestBody Patient patient) {
         return ResponseEntity.ok(patientService.createPatient(patient));
     }
+    @GetMapping("/by-doctor")
+    public ResponseEntity<List<Patient>> getPatientsByDoctor(@RequestParam Long doctorId) {
+        List<Patient> patients = patientService.getPatientsByDoctor(doctorId);
+        return ResponseEntity.ok(patients);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<Patient> updatePatient(@PathVariable Long id, @RequestBody Patient patientDetails) {

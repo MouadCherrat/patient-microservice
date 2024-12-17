@@ -26,5 +26,6 @@ public class Patient {
     private String address;
     private String contactPerson;
     private String contactPhone;
+    private Long doctorId;
 }
 
