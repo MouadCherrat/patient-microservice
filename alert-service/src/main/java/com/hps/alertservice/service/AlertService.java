@@ -1,6 +1,8 @@
 package com.hps.alertservice.service;
 
+import com.hps.alertservice.dto.PatientResponse;
 import com.hps.alertservice.entity.Alert;
+import com.hps.alertservice.http.PatientClient;
 import com.hps.alertservice.repository.AlertRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,8 @@ import java.util.Optional;
 public class AlertService {
 
     private final AlertRepository alertRepository;
+    private final PatientClient patientClient;
+
 
     public List<Alert> getAllAlerts() {
         return alertRepository.findAll();
@@ -22,7 +26,14 @@ public class AlertService {
         return alertRepository.findById(id);
     }
 
-    public Alert createAlert(Alert alert) {
+    public Alert createAlert(Alert alert, Long patientId) {
+        PatientResponse patient = patientClient.getPatientById(patientId);
+        if (patient == null) {
+            throw new IllegalArgumentException("Patient not found with ID: " + patientId);
+        }
+
+        System.out.println("Patient Details: " + patient);
+
         return alertRepository.save(alert);
     }
 

@@ -27,6 +27,7 @@ public class Alert {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private AlertType type;
+    private Long patientId;
     @CreationTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;

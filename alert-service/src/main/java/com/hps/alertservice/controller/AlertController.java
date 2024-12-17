@@ -28,9 +28,17 @@ public class AlertController {
     }
 
     @PostMapping
-    public ResponseEntity<Alert> createAlert(@RequestBody Alert alert) {
-        return ResponseEntity.ok(alertService.createAlert(alert));
+    public ResponseEntity<Alert> createAlert(
+            @RequestBody Alert alert,
+            @RequestParam Long patientId) {
+        try {
+            Alert createdAlert = alertService.createAlert(alert, patientId);
+            return ResponseEntity.ok(createdAlert);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(404).body(null);
+        }
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Alert> updateAlert(@PathVariable Long id, @RequestBody Alert alertDetails) {

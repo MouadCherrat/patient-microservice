@@ -15,13 +15,11 @@ public class PatientController {
 
     private final PatientService patientService;
 
-    // Récupérer tous les patients
     @GetMapping
     public List<Patient> getAllPatients() {
         return patientService.getAllPatients();
     }
 
-    // Récupérer un patient par ID
     @GetMapping("/{id}")
     public ResponseEntity<Patient> getPatientById(@PathVariable Long id) {
         return patientService.getPatientById(id)
@@ -29,13 +27,11 @@ public class PatientController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Créer un patient
     @PostMapping
     public ResponseEntity<Patient> createPatient(@RequestBody Patient patient) {
         return ResponseEntity.ok(patientService.createPatient(patient));
     }
 
-    // Mettre à jour un patient
     @PutMapping("/{id}")
     public ResponseEntity<Patient> updatePatient(@PathVariable Long id, @RequestBody Patient patientDetails) {
         try {
@@ -45,7 +41,6 @@ public class PatientController {
         }
     }
 
-    // Supprimer un patient
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
         patientService.deletePatient(id);
