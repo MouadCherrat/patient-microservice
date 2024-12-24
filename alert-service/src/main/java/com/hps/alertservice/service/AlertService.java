@@ -17,6 +17,9 @@ public class AlertService {
     private final AlertRepository alertRepository;
     private final PatientClient patientClient;
 
+    public List<Alert> getAlertsByPatientId(Long patientId) {
+        return alertRepository.findByPatientIdOrderByCreatedAtDesc(patientId);
+    }
 
     public List<Alert> getAllAlerts() {
         return alertRepository.findAll();
@@ -45,7 +48,12 @@ public class AlertService {
             return alertRepository.save(alert);
         }).orElseThrow(() -> new RuntimeException("Alert not found"));
     }
-
+    public Optional<Alert> markAlertAsChecked(Long alertId) {
+        return alertRepository.findById(alertId).map(alert -> {
+            alert.setChecked(true);
+            return alertRepository.save(alert);
+        });
+    }
     public void deleteAlert(Long id) {
         alertRepository.deleteById(id);
     }

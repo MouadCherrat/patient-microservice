@@ -27,5 +27,9 @@ public class Patient {
     private String contactPerson;
     private String contactPhone;
     private Long doctorId;
+    @Column(unique = true, nullable = false)
+    private String username;
+    @Column(nullable = false)
+    private String password;
 }
 

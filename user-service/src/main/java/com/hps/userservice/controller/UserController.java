@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -53,4 +55,18 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody User loginRequest) {
+        Optional<User> user = userService.validateUser(loginRequest.getUsername(), loginRequest.getPassword());
+        if (user.isPresent()) {
+            return ResponseEntity.ok(Map.of(
+                    "message", "Login successful",
+                    "userId", user.get().getId(),
+                    "role", user.get().getRole()
+            ));
+        } else {
+            return ResponseEntity.status(401).body(Map.of("message", "Invalid username or password"));
+        }
+    }
+
 }

@@ -1,50 +1,66 @@
 version: "3.8"
 
 services:
-
+  # MySQL Service
   mysql:
     image: mysql:latest
     container_name: mysql-patient
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./init:/docker-entrypoint-initdb.d
-    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
     ports:
       - "3307:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: secret
     networks:
-      - db-net
+      - app-net
 
+  # phpMyAdmin for Database Management
   phpmyadmin:
     image: phpmyadmin
-    restart: always
     container_name: phpmyadmin-patient
-    ports:
-      - "81:80"
     environment:
       PMA_HOST: mysql
+      PMA_PORT: 3306
       MYSQL_ROOT_PASSWORD: secret
+    ports:
+      - "81:80"
     depends_on:
       - mysql
     networks:
-      - db-net
+      - app-net
 
-#  rabbitmq:
-#    image: rabbitmq:management
-#    container_name: rabbitmq
-#    environment:
-#      - RABBITMQ_DEFAULT_USER=guest
-#      - RABBITMQ_DEFAULT_PASS=guest
-#    ports:
-#      - "5672:5672"
-#      - "15672:15672"
-#    networks:
-#      - db-net
+  # Prometheus Service
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - monitoring
+      - app-net
 
+  # Grafana Service
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin  # Default Grafana password
+    ports:
+      - "3000:3000"  # Grafana on port 3000
+    depends_on:
+      - prometheus
+    networks:
+      - monitoring
+    volumes:
+      - grafana-data:/var/lib/grafana
+networks:
+  monitoring:
+    driver: bridge
+  app-net:
+    driver: bridge
 
 volumes:
   mysql_data:
-networks:
-  db-net:
-    driver: bridge
+  grafana-data:

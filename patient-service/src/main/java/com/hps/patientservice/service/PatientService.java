@@ -45,4 +45,8 @@ public class PatientService {
     public void deletePatient(Long id) {
         patientRepository.deleteById(id);
     }
+    public Optional<Patient> getPatientByUsernameAndPassword(String username, String password) {
+        return patientRepository.findByUsernameAndPassword(username, password);
+    }
+
 }

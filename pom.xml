@@ -19,6 +19,7 @@
         <module>api-gateway</module>
         <module>user-service</module>
         <module>patient-service</module>
+        <module>alert-service</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -34,6 +35,7 @@
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
     </properties>
     <dependencies>
+
 
 
         <!-- lombok dependencies should not end up on classpath -->

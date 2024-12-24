@@ -41,6 +41,10 @@ spring:
           uri: lb://patient-service
           predicates:
             - Path=/api/medical-records/**
+        - id: model-service
+          uri: lb://MODEL-SERVICE
+          predicates:
+            - Path=/api/predict/**
 
 
 eureka:

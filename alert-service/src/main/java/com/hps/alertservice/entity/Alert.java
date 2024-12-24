@@ -31,6 +31,7 @@ public class Alert {
     @CreationTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
-
+    @Column(nullable = false)
+    private boolean isChecked = false; // Default value
 
 }
