@@ -1,0 +1,41 @@
+<div>
+  <h1>Alert Management</h1>
+  <nav>
+    <a routerLink="/alerts">Liste des Alertes</a> |
+    <a routerLink="/alerts/create">Créer une Alerte</a>
+  </nav>
+</div>
+
+<div class="alert-list-container">
+  <h1>Liste des Alertes</h1>
+
+  <div *ngIf="loading">Chargement...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <table *ngIf="!loading && !error">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Patient</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let alert of alerts" (click)="viewDetails(alert.id!)">
+        <td>{{ alert.id }}</td>
+        <td>{{ alert.title }}</td>
+        <td>{{ alert.type }}</td>
+        <td>{{ alert.description }}</td>
+        <td>{{ getPatientName(alert.patientId) }}</td>
+        <td>{{ alert.createdAt }}</td>
+        <td>
+          <button *ngIf="alert.id !== undefined" (click)="deleteAlert(alert.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

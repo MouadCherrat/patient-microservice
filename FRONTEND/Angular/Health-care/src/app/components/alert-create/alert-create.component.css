@@ -1,0 +1,139 @@
+/* Conteneur principal avec style luxueux */
+.container {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background: linear-gradient(145deg, #ffffff, #f3f3f3);
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(255, 255, 255, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+/* Titre stylisé */
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #444;
+  text-shadow: 1px 1px 0px #ddd;
+}
+
+/* Groupes de formulaire */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Étiquettes */
+label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+label:hover {
+  color: #007bff;
+}
+
+/* Champs de formulaire */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  background: #f8f8f8;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  transform: scale(1.02);
+}
+
+/* Bouton de soumission */
+button[type="submit"] {
+  display: inline-block;
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+/* Effet au survol */
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, #0056b3, #004085);
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Effet d'activation (clic) */
+button[type="submit"]:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #004085, #002855);
+}
+
+/* Effet de focus pour accessibilité */
+button[type="submit"]:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+}
+
+/* Effet pour textarea */
+textarea {
+  resize: none;
+  height: 150px;
+}
+
+/* Animation des options dans le select */
+select {
+  appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg fill="%23007bff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 7l3-3 3 3M7 13l3 3 3-3"/></svg>')
+    no-repeat right 1rem center;
+  background-size: 1.5rem 1.5rem;
+}
+
+option {
+  padding: 0.5rem;
+  background: #f8f8f8;
+  color: #333;
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}

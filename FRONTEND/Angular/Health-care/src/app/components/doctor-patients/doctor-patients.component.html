@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Patients du Docteur</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Adresse</th>
+        <th>Contact</th>
+        <th>Téléphone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patients">
+        <td>{{ patient.id }}</td>
+        <td>{{ patient.firstName }}</td>
+        <td>{{ patient.lastName }}</td>
+        <td>{{ patient.address }}</td>
+        <td>{{ patient.contactPerson }}</td>
+        <td>{{ patient.contactPhone }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button routerLink="/users">Retour</button>
+</div>

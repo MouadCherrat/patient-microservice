@@ -1,0 +1,28 @@
+
+<div class="container">
+  <h1>Créer une Alerte</h1>
+  <form (ngSubmit)="createAlert()">
+    <label>Titre:</label>
+    <input type="text" [(ngModel)]="alert.title" name="title" required />
+
+    <label>Description:</label>
+    <textarea [(ngModel)]="alert.description" name="description"></textarea>
+
+    <label>Type:</label>
+    <select [(ngModel)]="alert.type" name="type" required>
+      <option value="CRITICAL">Critique</option>
+      <option value="WARNING">Avertissement</option>
+      <option value="FALL">Chute</option>
+      <option value="ESCAPE">Évasion</option>
+    </select>
+
+    <label>Patient :</label>
+    <select [(ngModel)]="alert.patientId" name="patientId" required>
+      <option *ngFor="let patient of patients" [value]="patient.id">
+        {{ patient.firstName }} {{ patient.lastName }}
+      </option>
+    </select>
+
+    <button type="submit">Créer</button>
+  </form>
+</div>

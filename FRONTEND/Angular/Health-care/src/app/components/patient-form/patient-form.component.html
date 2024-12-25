@@ -1,0 +1,28 @@
+<h2>{{ isEditMode ? 'Modifier' : 'Ajouter' }} un Patient</h2>
+<form (ngSubmit)="onSubmit()">
+  <label>Nom : <input [(ngModel)]="patient.firstName" name="firstName" required /></label>
+  <label>Prénom : <input [(ngModel)]="patient.lastName" name="lastName" required /></label>
+  <label>Date de naissance : <input type="date" [(ngModel)]="patient.birthDate" name="birthDate" required /></label>
+  <label>Genre :
+    <select [(ngModel)]="patient.gender" name="gender" required>
+      <option value="Male">Homme</option>
+      <option value="Female">Femme</option>
+    </select>
+  </label>
+  <label>Adresse : <input [(ngModel)]="patient.address" name="address" /></label>
+  <label>Contact : <input [(ngModel)]="patient.contactPerson" name="contactPerson" /></label>
+  <label>Téléphone : <input [(ngModel)]="patient.contactPhone" name="contactPhone" /></label>
+
+  <label>Médecin Responsable :
+    <select [(ngModel)]="patient.doctorId" name="doctorId" required>
+      <option *ngIf="isLoadingDoctors" disabled>Chargement des médecins...</option>
+      <option *ngFor="let doctor of doctors" [value]="doctor.id">{{ doctor.name }}</option>
+    </select>
+  </label>
+
+  <label>Nom d'utilisateur : <input [(ngModel)]="patient.username" name="username" required /></label>
+  <label>Mot de passe : <input type="password" [(ngModel)]="patient.password" name="password" required /></label>
+
+  <button type="submit">Enregistrer</button>
+  <button type="button" (click)="router.navigate(['/patients'])">Annuler</button>
+</form>

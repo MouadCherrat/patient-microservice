@@ -1,0 +1,18 @@
+<div class="container" *ngIf="alert">
+  <h1>Détails de l'Alerte</h1>
+  <p><strong>ID :</strong> {{ alert.id }}</p>
+  <p><strong>Titre :</strong> {{ alert.title }}</p>
+  <p><strong>Type :</strong> {{ alert.type }}</p>
+  <p><strong>Description :</strong> {{ alert.description }}</p>
+  
+  <!-- Affichage du nom et prénom du patient -->
+  <p *ngIf="patient">
+    <strong>Patient :</strong> {{ patient.firstName }} {{ patient.lastName }}
+  </p>
+  <p *ngIf="!patient">
+    <strong>Patient :</strong> Chargement des informations...
+  </p>
+
+  <p><strong>Date de création :</strong> {{ alert.createdAt }}</p>
+  <button (click)="goBack()">Retour</button>
+</div>

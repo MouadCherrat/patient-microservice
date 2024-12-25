@@ -1,0 +1,50 @@
+<div>
+  <h1>Gestion des Médecins</h1>
+  <nav>
+    <a routerLink="/add-user" class="btn-add-user">Créer un Utilisateur</a>
+  </nav>
+</div> 
+
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom d'utilisateur</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Rôle</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let user of users"
+        (click)="navigateToDetails(user.id)"
+        class="clickable-row"
+      >
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phoneNumber }}</td>
+        <td>{{ user.role }}</td>
+        <td class="action-buttons">
+          <button
+            [routerLink]="['/doctor', user.id, 'patients']"
+            class="btn-view"
+            (click)="$event.stopPropagation()"
+          >
+            Voir les Patients
+          </button>
+          <button
+            (click)="deleteUser(user.id!)"
+            class="btn-delete"
+            (click)="$event.stopPropagation()"
+          >
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

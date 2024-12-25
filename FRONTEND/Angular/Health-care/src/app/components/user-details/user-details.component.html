@@ -1,0 +1,14 @@
+<div class="container">
+    <h1>Détails du Médecin</h1>
+    <p><strong>ID :</strong> {{ user.id }}</p>
+    <p><strong>Nom d'utilisateur :</strong> {{ user.username }}</p>
+    <p><strong>Email :</strong> {{ user.email }}</p>
+    <p><strong>Mot de passe :</strong> {{ user.password }}</p>
+    <p><strong>Téléphone :</strong> {{ user.phoneNumber }}</p>
+    <p><strong>Rôle :</strong> {{ user.role }}</p>
+    <div class="button-group">
+      <button routerLink="/users">Retour</button>
+      <button (click)="navigateToEdit()">Modifier</button>
+    </div>
+  </div>
+  

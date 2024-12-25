@@ -1,0 +1,62 @@
+/* Conteneur principal */
+.container {
+  margin: 2rem auto;
+  padding: 1.5rem;
+  max-width: 800px;
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+/* Titre */
+h2 {
+  text-align: center;
+  color: #28a745;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+thead th {
+  background-color: #28a745;
+  color: white;
+  padding: 1rem;
+  text-align: left;
+}
+
+tbody td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+/* Bouton Retour */
+button {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.2rem;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,35 @@
+<h2>Liste des Patients</h2>
+
+<button class="action-btn add-btn" (click)="addPatient()">Ajouter un Patient</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Date de Naissance</th>
+      <th>Genre</th>
+      <th>Adresse</th>
+      <th>Contact</th>
+      <th>Téléphone</th>
+      <th>Médecin Responsable</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let patient of patients">
+      <td>{{ patient.firstName }}</td>
+      <td>{{ patient.lastName }}</td>
+      <td>{{ patient.birthDate }}</td>
+      <td>{{ patient.gender }}</td>
+      <td>{{ patient.address }}</td>
+      <td>{{ patient.contactPerson }}</td>
+      <td>{{ patient.contactPhone }}</td>
+      <td>{{ getDoctorName(patient.doctorId) }}</td> <!-- Fetch and display doctor's name -->
+      <td>
+        <button class="action-btn edit-btn" (click)="editPatient(patient.id!)">Modifier</button>
+        <button class="action-btn delete-btn" (click)="deletePatient(patient.id!)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

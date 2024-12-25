@@ -1,0 +1,176 @@
+/* Conteneur principal */
+.container {
+  margin: 3rem auto;
+  padding: 2rem;
+  max-width: 1200px;
+  background: linear-gradient(to bottom right, #f0f4ff, #ffffff);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Titres principaux */
+h1,
+h2 {
+  text-align: center;
+  color: #002855;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+  letter-spacing: 1.5px;
+  position: relative;
+}
+
+h1::after,
+h2::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background-color: #0056b3;
+  display: block;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* Bouton Ajouter */
+button.add-btn {
+  background-color: #0056b3;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 12px 30px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  border: none;
+  margin-bottom: 2rem;
+  display: inline-block;
+}
+
+button.add-btn:hover {
+  background-color: #003f7f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Tableau */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+thead th {
+  background-color: #0056b3;
+  color: #ffffff;
+  padding: 20px;
+  text-align: left;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+tbody td {
+  padding: 20px;
+  color: #4a4a4a;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 1rem;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8fbff;
+}
+
+tbody tr:hover {
+  background-color: #e9f3ff;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Boutons d'actions */
+.action-buttons {
+  display: flex;
+  align-items: center;
+}
+
+/* Bouton Modifier */
+button.edit-btn {
+  background-color: #fd7e14;
+  color: #ffffff;
+  margin-right: 15px; /* Ajout de l'espace entre les boutons */
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: all 0.2s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+button.edit-btn:hover {
+  background-color: #e86c10;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Bouton Supprimer */
+button.delete-btn {
+  background-color: #dc3545;
+  color: #ffffff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: all 0.2s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+button.delete-btn:hover {
+  background-color: #b02a37;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Réactivité du tableau */
+@media (max-width: 768px) {
+  table {
+    font-size: 0.9rem;
+  }
+
+  h1,
+  h2 {
+    font-size: 2.2rem;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    font-size: 0.85rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: 12px;
+  }
+
+  button {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+}
