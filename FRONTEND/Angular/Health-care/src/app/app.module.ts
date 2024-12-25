@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 // Composants principaux
 import { AppComponent } from './app.component';
@@ -23,6 +23,12 @@ import { PatientListComponent } from './components/patient-list/patient-list.com
 import { PatientFormComponent } from './components/patient-form/patient-form.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { HttpTokenInterceptor } from './auth/auth.interceptor';
+import { KeycloakService } from './keycloak/keycloak.service';
+
+export function kcFactory(kcService: KeycloakService) {
+  return () => kcService.init();
+}
 
 @NgModule({
   declarations: [
@@ -45,7 +51,19 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpTokenInterceptor,
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      deps: [KeycloakService],
+      useFactory: kcFactory,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
