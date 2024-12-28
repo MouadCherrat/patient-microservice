@@ -8,7 +8,7 @@ class DataSender {
   final int patientId;
   final BuildContext context;
 
-  bool _shouldStop = false; // Flag to stop generating sequences
+  bool _shouldStop = false;
 
   DataSender({
     required this.apiService,
@@ -63,7 +63,8 @@ class DataSender {
         Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high,
         );
-        sequence.add([position.latitude, position.longitude, position.altitude]);
+        sequence
+            .add([position.latitude, position.longitude, position.altitude]);
 
         print(
             'Collected location: ${position.latitude}, ${position.longitude}, ${position.altitude}');
@@ -76,7 +77,8 @@ class DataSender {
   }
 
   void handlePrediction(Map<String, dynamic> response) {
-    final predictedLabel = response['predicted_label'].toString().trim().toLowerCase();
+    final predictedLabel =
+        response['predicted_label'].toString().trim().toLowerCase();
     String? alertType;
 
     // Map predicted labels to alert types
@@ -104,7 +106,8 @@ class DataSender {
       // Stop further sequence generation after the first relevant prediction
       _shouldStop = true;
     } else {
-      print('Prediction: $predictedLabel. No alert generated for idle or unsupported label.');
+      print(
+          'Prediction: $predictedLabel. No alert generated for idle or unsupported label.');
     }
   }
 }
