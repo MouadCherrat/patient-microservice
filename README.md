@@ -12,10 +12,7 @@ The **Advanced Patient Monitoring System** is a cutting-edge platform that combi
 - [Frontend](#frontend)
 - [Backend](#backend)
 - [Getting Started](#getting-started)
-- [Video Demonstration](#video-demonstration)
 - [Usage](#usage)
-- [Contributing](#contributing)
-
 ---
 
 ## **Software Architecture**
@@ -152,19 +149,6 @@ volumes:
 2. **Service Layer:** Business logic for processing data.
 3. **Repository Layer:** Database interaction via JPA.
 
-### Key Dependencies:
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-jpa</artifactId>
-</dependency>
-<dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <scope>runtime</scope>
-</dependency>
-```
-
 ---
 
 ## **Getting Started**
@@ -185,11 +169,8 @@ volumes:
 
 5. **Java (17):** [Download Java](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html)  
    - Necessary for running Spring Boot microservices.
-
-6. **MySQL Server:** [Download MySQL](https://dev.mysql.com/downloads/mysql/)
-   - Used as the database for storing patient and event data.
   
-7. **Python (3.10+):** [Download Python](https://www.python.org/downloads/)
+6. **Python (3.10+):** [Download Python](https://www.python.org/downloads/)
    - Used for the Flask microservice hosting the deep learning model.
 
 
@@ -199,7 +180,7 @@ volumes:
 #### Backend:
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/YourRepo/YourProject.git](https://github.com/MouadCherrat/patient-microservice)
+   git clone (https://github.com/MouadCherrat/patient-microservice)
    cd patient-microservice
    ```
 2. Install dependencies:
@@ -251,39 +232,19 @@ volumes:
 
 ### Authentication:
 - **Admin Login:**
-  - Email: `admin@example.com`
+  - Email: `admin@gmail.com`
   - Password: `admin123`
 - **Doctor Login:**
-  - Email: `doctor@example.com`
+  - Email: `kahlil@gmail.com`
   - Password: `doctor123`
 - **Patient Login:**
-  - Email: `patient@example.com`
+  - Email: `mouad@gmail.com`
   - Password: `patient123`
 
 ### Features:
 - Monitor real-time GPS data.
 - Classify patient events using RNN-LSTM.
 - Send real-time alerts for critical events.
-
----
-
-## **Contributing**
-
-We welcome contributions to enhance the system! Please follow these steps:
-1. Fork the repository.
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Feature description"
-   ```
-4. Push to the branch:
-   ```bash
-   git push origin feature-name
-   ```
-5. Open a pull request.
 
 ---
 
